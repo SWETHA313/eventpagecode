@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #3a3766, #040212, #0a0121);
+      color: #fff;
+    }
+
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #1a1a1a;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: #323d3e;
+      color: #1a1a1a;
+    }
+
+    .user-icon {
+      font-size: 1.5rem;
+      margin-left: auto;
+    }
+
+    main {
+      display: flex;
+      padding: 2rem;
+      gap: 2rem;
+      flex-direction: column; 
+    }
+
+    .events-list {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    .event-card {
+      background-color: #666666;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .event-card:hover {
+      background-color: #242831;
+      transform: scale(1.05);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .event-card h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .event-card p {
+      margin: 0.3rem 0;
+    }
+
+    .event-details {
+      flex: 2;
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .event-info {
+      background: #666666;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-description {
+      padding: 1.5rem;
+      background: #666666;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(56, 55, 55, 0.2);
+    }
+
+    .event-description h3 {
+      margin-bottom: 1rem;
+      color: #869ea1;
+    }
+
+    .event-description ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .event-description li {
+      margin-bottom: 0.8rem;
+    }
+
+    .event-description li::before {
+      content: "✔";
+      color: #00bcd4;
+      margin-right: 0.5rem;
+    }
+
+    .register-box {
+      background: #666666;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      text-align: left;
+    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .text-placeholder{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+   }
+   .title-placeholder{
+    display: flex;
+
+    gap: 20px;
+    align-items: center;
+   }
+   .event-card-title-container{
+    display: flex;
+    flex-direction: column;
+    /* gap: 2px; */
+    align-items: center;
+   }
+   .sec-placeholder{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #c9c9c9;
+   }
+   .placeholder{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #c9c9c9;
+   }
+.event-details-p{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+    .register-btn {
+      padding: 0.7rem 1rem;
+      background-color: #3066be;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .register-btn:hover {
+      background-color: #020e49;
+      transform: scale(1.05);
+    }
+    .event-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .event-content p{
+        font-size: large;
+    }
+
+
+    /* Media Queries */
+    @media (max-width: 810px) {
+  .events-list {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    gap: 1.5rem; /* Space between event cards */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+    padding-bottom: 1rem; /* Add padding for scroll visibility */
+  }
+
+  .events-list::-webkit-scrollbar {
+    height: 8px; /* Set scrollbar height */
+  }
+
+  .events-list::-webkit-scrollbar-thumb {
+    background-color: #444444; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded scrollbar thumb */
+  }
+
+  .events-list::-webkit-scrollbar-track {
+    background: #1a1a1a; /* Scrollbar track color */
+  }
+}
+    @media (min-width: 811px) {
+      main{
+        flex-direction: row;
+      }
+      .events-list{
+        flex-direction: column;
+      }
+
+      
+      .navbar ul {
+        gap: 2rem;
+      }
+
+      .user-icon {
+        font-size: 2rem;
+      }
+
+      .event-card {
+        padding: 1.5rem;
+        
+      }
+    }
+  </style>
+</head>
+</head>
+<body>
+  <header class="navbar">
+    <nav>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Members</a></li>
+      </ul>
+    </nav>
+    <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+  </header>
+
+  <main>
+    <section class="events-list">
+      <!-- Event Card 1 -->
+      <div class="event-card" data-event="1">
+        <div class="title-placeholder">
+          <div class="sec-placeholder"></div>
+          <div class="event-card-title-container">
+            <h4>NSS Blood Camp</h4>
+            <p><i class="fas fa-calendar-alt"></i> 12/10/24</p>
+          </div>
+        </div>
+        <div class="event-details-p">
+          <p><i class="fas fa-users"></i> 200 Registered</p>
+          <p><i class="fas fa-hourglass-half"></i> 8 days left</p>
+        </div>
+      </div>
+
+      <!-- Event Card 2 -->
+      <div class="event-card" data-event="2">
+        <div class="title-placeholder">
+          <div class="sec-placeholder"></div>
+          <div class="event-card-title-container">
+            <h4>Annual Sports Meet</h4>
+            <p><i class="fas fa-calendar-alt"></i> 15/10/24</p>
+          </div>
+        </div>
+        <div class="event-details-p">
+          <p><i class="fas fa-users"></i> 120 Registered</p>
+          <p><i class="fas fa-hourglass-half"></i> 30 days left</p>
+        </div>
+      </div>
+
+      <!-- Event Card 3 -->
+      <div class="event-card" data-event="3">
+        <div class="title-placeholder">
+          <div class="sec-placeholder"></div>
+          <div class="event-card-title-container">
+            <h4>Workshop on AI</h4>
+            <p><i class="fas fa-calendar-alt"></i> 20/10/24</p>
+          </div>
+        </div>
+        <div class="event-details-p">
+          <p><i class="fas fa-users"></i> 50 Registered</p>
+          <p><i class="fas fa-hourglass-half"></i> 14 days left</p>
+        </div>
+      </div>
+
+      <!-- Event Card 4 -->
+      <div class="event-card" data-event="4">
+        <div class="title-placeholder">
+          <div class="sec-placeholder"></div>
+          <div class="event-card-title-container">
+            <h4>Tech Talk: Cloud Computing</h4>
+            <p><i class="fas fa-calendar-alt"></i> 25/10/24</p>
+          </div>
+        </div>
+        <div class="event-details-p">
+          <p><i class="fas fa-users"></i> 80 Registered</p>
+          <p><i class="fas fa-hourglass-half"></i> 21 days left</p>
+        </div>
+      </div>
+
+      <!-- Event Card 5 -->
+      <div class="event-card" data-event="5">
+        <div class="title-placeholder">
+          <div class="sec-placeholder"></div>
+          <div class="event-card-title-container">
+            <h4>Workshop on Data Science</h4>
+            <p><i class="fas fa-calendar-alt"></i> 30/10/24</p>
+          </div>
+        </div>
+        <div class="event-details-p">
+          <p><i class="fas fa-users"></i> 150 Registered</p>
+          <p><i class="fas fa-hourglass-half"></i> 19 days left</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="event-details" id="event-details">
+      <!-- Dynamic event details will be displayed here -->
+    </section>
+  </main>
+
+  <script>
+    // Event details data for 5 events
+    const eventData = {
+      1: {
+        title: "NSS Blood Camp",
+        date: "12/10/24",
+        location: "NITT Hospital",
+        time: "9:00am - 5:00pm",
+        description: "A Blood Donation Camp is a community-driven initiative aimed at saving lives by collecting blood from willing donors.",
+        objectives: [
+          "Save Lives: Blood collected is used to save patients undergoing surgeries.",
+          "Raise Awareness: Educating people about the importance of blood donation.",
+          "Promote Health: Encouraging a healthy lifestyle for eligible donors."
+        ]
+      },
+      2: {
+        title: "Annual Sports Meet",
+        date: "15/10/24",
+        location: "Sports Ground",
+        time: "10:00am - 4:00pm",
+        description: "A full-day event to encourage sportsmanship and healthy competition among students. Events include athletics, team sports, and individual challenges.",
+        objectives: [
+          "Encourage Teamwork: Promote collaboration and spirit of competition.",
+          "Foster Physical Fitness: Highlight the importance of regular physical activity.",
+          "Celebrate Achievement: Reward participants and winners in various sports."
+        ]
+      },
+      3: {
+        title: "Workshop on AI",
+        date: "20/10/24",
+        location: "Tech Lab, NITT",
+        time: "9:00am - 3:00pm",
+        description: "A workshop focusing on the latest advancements in Artificial Intelligence, featuring guest speakers and hands-on sessions.",
+        objectives: [
+          "Explore AI Trends: Learn about the latest research and applications of AI.",
+          "Hands-on Learning: Practical sessions on AI tools and technologies.",
+          "Networking: Opportunities to connect with industry professionals."
+        ]
+      },
+      4: {
+        title: "Tech Talk: Cloud Computing",
+        date: "25/10/24",
+        location: "NITT Auditorium",
+        time: "10:00am - 2:00pm",
+        description: "A talk on the fundamentals and future of cloud computing, focusing on its impact on businesses and technology.",
+        objectives: [
+          "Understand Cloud Computing: Overview of cloud services and platforms.",
+          "Industry Insights: Learn how companies are leveraging cloud technology.",
+          "Future of Cloud: Discuss upcoming trends and innovations in cloud computing."
+        ]
+      },
+      5: {
+        title: "Workshop on Data Science",
+        date: "30/10/24",
+        location: "Data Science Lab, NITT",
+        time: "9:00am - 5:00pm",
+        description: "A workshop covering data analysis, machine learning, and big data tools, with practical exercises for hands-on experience.",
+        objectives: [
+          "Data Analysis Techniques: Learn the basics of data analysis and statistics.",
+          "Machine Learning: Introduction to machine learning models and algorithms.",
+          "Big Data Tools: Overview of tools like Hadoop, Spark, and Python for data science."
+        ]
+      }
+    };
+
+// Function to display event details when an event card is clicked
+document.querySelectorAll('.event-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const eventId = this.getAttribute('data-event');
+    const event = eventData[eventId];
+
+    // Update the event details section
+    const eventDetailsSection = document.getElementById('event-details');
+    eventDetailsSection.innerHTML = `
+      <div class="event-info">
+        <div class="text-placeholder">
+          <div class="placeholder"></div>
+          <h2>${event.title}</h2>
+        </div>
+        <div class="event-content">
+          <p><i class="fas fa-calendar-alt"></i> ${event.date}</p>
+          <p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
+          <p><i class="fas fa-clock"></i> ${event.time}</p>
+        </div>
+      </div>
+      <div class="register-box">
+        <h3>Register for the Event:</h3>
+        <button class="register-btn">Register</button>
+      </div>
+      <div class="event-description">
+        <h3>About the Event</h3>
+        <p>${event.description}</p>
+        <h3>Objectives</h3>
+        <ul>
+          ${event.objectives.map(objective => `<li>${objective}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  });
+});
+
+// Default: Show details for the first event on page load
+document.querySelector('.event-card[data-event="1"]').click();
+
+  </script>
+</body>
+</html>
