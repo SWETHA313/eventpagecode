@@ -264,7 +264,7 @@
 
   <main>
     <section class="events-list">
-      <!-- Event Card 1 -->
+      
       <div class="event-card" data-event="1">
         <div class="title-placeholder">
           <div class="sec-placeholder"></div>
@@ -279,7 +279,7 @@
         </div>
       </div>
 
-      <!-- Event Card 2 -->
+      
       <div class="event-card" data-event="2">
         <div class="title-placeholder">
           <div class="sec-placeholder"></div>
@@ -294,7 +294,7 @@
         </div>
       </div>
 
-      <!-- Event Card 3 -->
+      
       <div class="event-card" data-event="3">
         <div class="title-placeholder">
           <div class="sec-placeholder"></div>
@@ -309,7 +309,7 @@
         </div>
       </div>
 
-      <!-- Event Card 4 -->
+      
       <div class="event-card" data-event="4">
         <div class="title-placeholder">
           <div class="sec-placeholder"></div>
@@ -324,7 +324,7 @@
         </div>
       </div>
 
-      <!-- Event Card 5 -->
+      
       <div class="event-card" data-event="5">
         <div class="title-placeholder">
           <div class="sec-placeholder"></div>
@@ -341,12 +341,12 @@
     </section>
 
     <section class="event-details" id="event-details">
-      <!-- Dynamic event details will be displayed here -->
+      
     </section>
   </main>
 
   <script>
-    // Event details data for 5 events
+    
     const eventData = {
       1: {
         title: "NSS Blood Camp",
@@ -410,13 +410,13 @@
       }
     };
 
-// Function to display event details when an event card is clicked
+
 document.querySelectorAll('.event-card').forEach(card => {
   card.addEventListener('click', function() {
     const eventId = this.getAttribute('data-event');
     const event = eventData[eventId];
 
-    // Update the event details section
+    
     const eventDetailsSection = document.getElementById('event-details');
     eventDetailsSection.innerHTML = `
       <div class="event-info">
@@ -446,7 +446,7 @@ document.querySelectorAll('.event-card').forEach(card => {
   });
 });
 
-// Default: Show details for the first event on page load
+
 document.querySelector('.event-card[data-event="1"]').click();
 
   </script>
